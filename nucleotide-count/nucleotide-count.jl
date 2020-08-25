@@ -7,10 +7,9 @@ Invalid strands raise a `DomainError`.
 
 """
 function count_nucleotides(strand)
-    nucleotides_count = Dict('A' => 0, 'C' => 0, 'G' => 0, 'T' => 0)
-    valid_nucl = Set(['A', 'C', 'G', 'T'])
+    nucleotides_count = Dict(base => 0 for base in "ACGT")
     for n in strand
-        if n ∈ valid_nucl
+        if n ∈ keys(nucleotides_count)
             nucleotides_count[n] += 1
         else
             throw(DomainError(n))
